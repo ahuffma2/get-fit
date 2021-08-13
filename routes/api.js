@@ -18,7 +18,18 @@ router.get('/api/workouts/', async (req,res) => {
 
 //GET RANGE
 router.get('/api/workouts/range/', async (req,res) => {
-    
+    await Workout.aggregate( [
+        {
+            $addFields: 
+            {
+                totalDuration: {$sum: "$exercises.duration"}
+            }
+        }])
+        .limit(7)
+      .then(workoutDb => {
+        res.json(workoutDb);
+      })
+      .catch(err => res.status(400).json(err));
 });
 
 //POST WORKOUT
