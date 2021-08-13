@@ -10,8 +10,8 @@ router.get('/api/workouts/', async (req,res) => {
                 totalDuration: {$sum: "$exercises.duration"}
             }
         }])
-      .then(dbWorkout => {
-        res.json(dbWorkout);
+      .then(workoutDb => {
+        res.json(workoutDb);
       })
       .catch(err => res.status(400).json(err));
 });
@@ -21,20 +21,27 @@ router.get('/api/workouts/:id', async (req,res) => {
     
 });
 
+//GET RANGE
 router.get('/api/workouts/range/', async (req,res) => {
     
 });
 
-//POST requests
-
-router.post('api/workouts/:id', async (req,res) => {
-    
+//POST WORKOUT
+router.post('api/workouts/', async ({body},res) => {
+        await Workout.create(body)
+          .then(workoutDb => {
+            res.json(workoutDb);
+          })
+          .catch(err => res.status(400).json(err));
 });
 
-//PUT requests
-
-router.put('api/workouts/:id', async (req,res) => {
-    
+//UPDATE WORKOUT
+router.put('api/workouts/:id', ({body},res) => {
+    // Workout.findByIdAndUpdate({body.id})
+    // .then(workoutDb => {
+    //     res.json(workoutDb)
+    // })
+    // .catch(err => res.status(400).json(err));
 });
 
 module.exports = router;
