@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 
 router.get('/api/workouts/', (req,res) => {
     Workout.find({})
+      .limit(1)
+      .sort({$natural:-1})
       .then(dbWorkout => {
         res.json(dbWorkout);
       })
