@@ -1,7 +1,7 @@
 {
-  "name": "mongoose_skeleton",
+  "name": "get-fit",
   "version": "1.0.0",
-  "description": "",
+  "description": "Use this app to track your exercise and get fit!",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,11 +9,27 @@
     "watch": "nodemon server.js",
     "seed": "node seeders/seed.js"
   },
-  "author": "",
+  "author": "Austin Huffman",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.3",
-    "mongoose": "^5.3.16",
+    "expresss": "^0.0.0",
+    "mongoose": "^5.13.7",
     "morgan": "^1.9.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahuffma2/get-fit.git"
+  },
+  "keywords": [
+    "fitness",
+    "exercise",
+    "calories",
+    "health"
+  ],
+  "bugs": {
+    "url": "https://github.com/ahuffma2/get-fit/issues"
+  },
+  "homepage": "https://github.com/ahuffma2/get-fit#readme"
 }
