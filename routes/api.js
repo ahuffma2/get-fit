@@ -3,7 +3,7 @@ const Workout = require("../models/workout");
 const mongoose = require("mongoose");
 
 router.get('/api/workouts/', async (req,res) => {
-    const workout = await Workout.aggregate( [
+    await Workout.aggregate( [
         {
             $addFields: 
             {
@@ -16,11 +16,6 @@ router.get('/api/workouts/', async (req,res) => {
       .catch(err => res.status(400).json(err));
 });
 
-//Might not be being used??? Might Only Be posting
-router.get('/api/workouts/:id', async (req,res) => {
-    
-});
-
 //GET RANGE
 router.get('/api/workouts/range/', async (req,res) => {
     
@@ -28,7 +23,6 @@ router.get('/api/workouts/range/', async (req,res) => {
 
 //POST WORKOUT
 router.post('/api/workouts/', async ({body},res) => {
-    console.log(body)
         await Workout.create(body)
           .then(workoutDb => {
             res.json(workoutDb);
@@ -39,12 +33,12 @@ router.post('/api/workouts/', async ({body},res) => {
 
 //UPDATE WORKOUT
 router.put('/api/workouts/:id', async ({body},res) => {
-    console.log(body)
-    Workout.findByIdAndUpdate(body._id,)
-    .then(workoutDb => {
-        res.json(workoutDb)
-    })
-    .catch(err => res.status(400).json(err));
+    console.log('hellow');
+    await Workout.findByIdAndUpdate(/*ID, push to collection*/)
+      .then(workoutDb => {
+          res.json(workoutDb);
+      })
+      .catch(err => res.status(400).json(err));
 });
 
 module.exports = router;
