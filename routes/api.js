@@ -2,10 +2,14 @@ const router = require("express").Router();
 const Workout = require("../models/workout");
 const mongoose = require("mongoose");
 
-router.get('/api/workouts/', (req,res) => {
-    Workout.find({})
-      .limit(1)
-      .sort({$natural:-1})
+router.get('/api/workouts/', async (req,res) => {
+    const workout = await Workout.aggregate( [
+        {
+            $addFields: 
+            {
+                totalDuration: {$sum: "$exercises.duration"}
+            }
+        }])
       .then(dbWorkout => {
         res.json(dbWorkout);
       })
@@ -13,19 +17,23 @@ router.get('/api/workouts/', (req,res) => {
 });
 
 //Might not be being used??? Might Only Be posting
-router.get('/api/workouts/:id', (req,res) => {
+router.get('/api/workouts/:id', async (req,res) => {
     
 });
 
-router.get('/api/workouts/range/', (req,res) => {
+router.get('/api/workouts/range/', async (req,res) => {
     
 });
 
-router.post('api/workouts/:id', (req,res) => {
+//POST requests
+
+router.post('api/workouts/:id', async (req,res) => {
     
 });
 
-router.put('api/workouts/:id', (req,res) => {
+//PUT requests
+
+router.put('api/workouts/:id', async (req,res) => {
     
 });
 
