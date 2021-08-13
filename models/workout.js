@@ -26,6 +26,10 @@ const workoutSchema = new Schema({
       type: Number,
       require: "Please Enter the Minutes spent Exercising"
     },
+    day: {
+      type: Date,
+      default: Date.now
+    }
   });
   
   const Workout = mongoose.model("Workout", workoutSchema);
