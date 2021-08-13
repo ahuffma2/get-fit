@@ -19,13 +19,14 @@ router.get('/api/workouts/', async (req,res) => {
 //GET RANGE
 router.get('/api/workouts/range/', async (req,res) => {
     await Workout.aggregate( [
+      {
+        $addFields: 
         {
-            $addFields: 
-            {
-                totalDuration: {$sum: "$exercises.duration"}
-            }
-        }])
-        .limit(7)
+             totalDuration: {$sum: "$exercises.duration"}
+        }
+      }])
+      .sort({day:-1})
+      .limit(7)
       .then(workoutDb => {
         res.json(workoutDb);
       })
