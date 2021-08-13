@@ -11,13 +11,14 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // this may need to be changed
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/get-fit", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useNewUrlParser: true,
   useFindAndModify: false
 });
 
 // routes
 app.use(require("./routes/api.js"));
+app.use(require('./routes/frontend.js'));
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
