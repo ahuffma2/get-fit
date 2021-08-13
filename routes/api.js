@@ -23,6 +23,7 @@ router.get('/api/workouts/range/', async (req,res) => {
 
 //POST WORKOUT
 router.post('/api/workouts/', async ({body},res) => {
+    console.log(body)
         await Workout.create(body)
           .then(workoutDb => {
             res.json(workoutDb);
@@ -30,11 +31,9 @@ router.post('/api/workouts/', async ({body},res) => {
           .catch(err => res.status(400).json(err));
 });
 
-
 //UPDATE WORKOUT
-router.put('/api/workouts/:id', async ({body},res) => {
-    console.log('hellow');
-    await Workout.findByIdAndUpdate(/*ID, push to collection*/)
+router.put('/api/workouts/:id', async (req,res) => {
+    await Workout.findByIdAndUpdate(req.params.id, {$push: {exercises: req.body}})
       .then(workoutDb => {
           res.json(workoutDb);
       })
