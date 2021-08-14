@@ -29,6 +29,9 @@ const workoutSchema = new Schema({
       type: Number,
       require: "Please Enter the Minutes spent Exercising"
     },
+    distance:{
+      type: Number
+    }
   }
   ],
     day: {
