@@ -1,7 +1,7 @@
 # Get Fit  
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
   
-  Use this handy application to track your daily workouts in detail. Visualize your progress via graphs to keep see your improvement over time! 
+  Use this handy application to track your daily workouts in detail. Visualize your progress via graphs to see your improvement over time! 
 
   ## Table of Contents
   
@@ -17,7 +17,7 @@
   * Optional:   Run the command ```Npm Run Seed`` if you want to have pre-made data instead of inputting your own
   * Run ```Nodemon Server.js``` 
   
-  And that's it you're good to go! Go to Localhost:3000 on your browser and and you're good! 
+  And that's it! Go to Localhost:3000 on your browser and and you're good! 
   
   --------
   
